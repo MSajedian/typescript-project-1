@@ -8,19 +8,19 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 
 // ******** String ********
-let character = "mario";
-character = "luigi";
+let characterOne = "mario";
+characterOne = "luigi";
 
 // impossible:
-// character = 20;
+// characterOne = 20;
 
 // ******** Number ********
-let age = 30;
+let ageOne = 30;
 
-age = 40;
+ageOne = 40;
 
 // impossible:
-// age = 'yoshi';
+// ageOne = 'yoshi';
 
 // ******** Boolean ********
 let isBlackBelt = false;
@@ -29,6 +29,7 @@ isBlackBelt = true;
 // impossible:
 // isBlackBelt = 'yes';
 
+// ****************************************************
 // ******** Function ********
 const circ = (diameter: number) => {
   return diameter * Math.PI;
@@ -51,35 +52,84 @@ numbers.push(3);
 // numbers.push("toad");
 // numbers[1] = 3;
 
-let mixed = ['ken', 4, 'chun-li', 8, 9];
+let mixedOne = ["ken", 4, "chun-li", 8, 9];
 
-mixed.push('ryu');
-mixed.push(10);
-mixed[0] = 3;
+mixedOne.push("ryu");
+mixedOne.push(10);
+mixedOne[0] = 3;
 
 // ******** Object ********
-let ninja = {
-  name: 'mario',
-  belt: 'black',
-  age: 30
+let ninjaOne = {
+  name: "mario",
+  belt: "black",
+  age: 30,
 };
 
-ninja.age = 40;
-ninja.name = 'ryu';
+ninjaOne.age = 40;
+ninjaOne.name = "ryu";
 // impossible:
-// ninja.age = '30';
-// ninja.skills = ['fighting', 'sneaking']
+// ninjaOne.age = '30';
+// ninjaOne.skills = ['fighting', 'sneaking']
 
-ninja = {
-  name: 'yoshi',
-  belt: 'orange',
+ninjaOne = {
+  name: "yoshi",
+  belt: "orange",
   age: 40,
   // impossible:
   // skills: ['running'],
 };
 
 // impossible:
-// ninja = {
+// ninjaOne = {
 //   name: 'yoshi',
 //   belt: 'orange',
 // };
+
+// ****************************************************
+// **************** Explicit Types ****************
+
+let characterTwo: string = "mario";
+let ageTwo: number;
+let isLoggedIn: boolean;
+
+ageTwo = 30;
+// impossible:
+// age = 'luigi';
+
+isLoggedIn = true;
+// impossible:
+// isLoggedIn = 25;
+
+// ******** Arrays ********
+let ninjasOne: string[] = [];
+
+ninjasOne.push("ryu");
+ninjasOne.push("chun-li");
+console.log(ninjasOne);
+// impossible:
+// ninjasOne = [10, 23];
+
+// impossible: (not initilised with empty array)
+// let ninjas2: string[];
+// ninjas2.push("ryu");
+
+// ******** Union Types ********
+let mixedTwo: (string | number | boolean)[] = [];
+mixedTwo.push("hello");
+mixedTwo.push(false);
+mixedTwo.push(20);
+console.log(mixedTwo);
+
+let uid: string | number;
+
+// ******** Objects ********
+let ninjaTwo: object;
+ninjaTwo = { name: "yoshi", age: 30 };
+
+let ninjaThree: {
+  name: string;
+  age: number;
+  beltColour: string;
+};
+ninjaThree = { name: "ken", age: 20, beltColour: "black" };
+// ****************************************************
