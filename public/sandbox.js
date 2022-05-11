@@ -119,3 +119,31 @@ console.log(ninja);
 // ****************************************************
 console.log("tscongif.json  was created");
 // ****************************************************
+// ******** Function Basics ********
+// let greet: Function
+// greet = () => {
+//   console.log('hello, again');
+// }
+let greet = () => {
+    console.log('hello, world');
+};
+// impossible:
+// greet = 'hello';
+// put the optional parameter at the end (as last parameter)
+// c is optional parameter 
+const myFunctionOne = (a, b, c) => { console.log(a); console.log(b); console.log(c); };
+// c is optional parameter 
+const myFunctionTwo = (a, b, c = 10) => { console.log(a); console.log(b); console.log(c); };
+// Parameter cannot have question mark and initializer 
+// c?: number | string = 10
+const add = (a, b, c /*?*/ = 10) => {
+    console.log(a + b);
+    console.log(c);
+};
+// Void functions are created and used just like value-returning functions except they do not return a value after the function executes.
+add(5, 10, 'ninja');
+const minus = (a, b) => {
+    return a - b;
+};
+let result = minus(10, 7);
+console.log(result);
