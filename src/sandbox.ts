@@ -138,24 +138,24 @@ let age: any = 25;
 
 age = true;
 console.log(age);
-age = 'hello';
+age = "hello";
 console.log(age);
-age = { name: 'luigi' };
+age = { name: "luigi" };
 console.log(age);
 
 let mixed: any[] = [];
 
 mixed.push(5);
-mixed.push('mario');
+mixed.push("mario");
 mixed.push(false);
 console.log(mixed);
 
-let ninja: { name: any, age: any };
+let ninja: { name: any; age: any };
 
-ninja = { name: 'yoshi', age: 25 };
+ninja = { name: "yoshi", age: 25 };
 console.log(ninja);
 
-ninja = { name: 25, age: 'yoshi' };
+ninja = { name: 25, age: "yoshi" };
 console.log(ninja);
 // ****************************************************
 console.log("tscongif.json  was created");
@@ -167,33 +167,55 @@ console.log("tscongif.json  was created");
 //   console.log('hello, again');
 // }
 
-let greet: Function = () => {
-  console.log('hello, world');
-}
+let greetOne: Function = () => {
+  console.log("hello, world");
+};
 
 // impossible:
 // greet = 'hello';
 
 // put the optional parameter at the end (as last parameter)
-// c is optional parameter 
-const myFunctionOne = (a: number, b: number, c?: number | string): void => { console.log(a); console.log(b); console.log(c); }
+// c is optional parameter
+const myFunctionOne = (a: number, b: number, c?: number | string): void => {
+  console.log(a);
+  console.log(b);
+  console.log(c);
+};
 
-// c is optional parameter 
-const myFunctionTwo = (a: number, b: number, c: number | string = 10): void => { console.log(a); console.log(b); console.log(c); }
+// c is optional parameter
+const myFunctionTwo = (a: number, b: number, c: number | string = 10): void => {
+  console.log(a);
+  console.log(b);
+  console.log(c);
+};
 
-// Parameter cannot have question mark and initializer 
+// Parameter cannot have question mark and initializer
 // c?: number | string = 10
 
-const add = (a: number, b: number, c/*?*/: number | string = 10): void => {
+const add = (a: number, b: number, c: /*?*/ number | string = 10): void => {
   console.log(a + b);
   console.log(c);
-}
+};
 // Void functions are created and used just like value-returning functions except they do not return a value after the function executes.
-add(5, 10, 'ninja');
+add(5, 10, "ninja");
 
 const minus = (a: number, b: number): number => {
   return a - b;
-}
+};
 
-let result = minus(10,7);
+let result = minus(10, 7);
 console.log(result);
+
+// ****************************************************
+// ******** Type Aliases ********
+type StringOrNum = string | number;
+type ObjWithName = { name: string; uid: StringOrNum };
+
+const logDetails = (uid: StringOrNum, item: string) => {
+  console.log(`${item} has a uid of ${uid}`);
+};
+
+const greetTwo = (user: ObjWithName) => {
+  console.log(`${user.name} says hello`);
+};
+// ****************************************************

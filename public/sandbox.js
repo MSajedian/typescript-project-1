@@ -102,19 +102,19 @@ ninjaThree = { name: "ken", age: 20, beltColour: "black" };
 let age = 25;
 age = true;
 console.log(age);
-age = 'hello';
+age = "hello";
 console.log(age);
-age = { name: 'luigi' };
+age = { name: "luigi" };
 console.log(age);
 let mixed = [];
 mixed.push(5);
-mixed.push('mario');
+mixed.push("mario");
 mixed.push(false);
 console.log(mixed);
 let ninja;
-ninja = { name: 'yoshi', age: 25 };
+ninja = { name: "yoshi", age: 25 };
 console.log(ninja);
-ninja = { name: 25, age: 'yoshi' };
+ninja = { name: 25, age: "yoshi" };
 console.log(ninja);
 // ****************************************************
 console.log("tscongif.json  was created");
@@ -124,26 +124,41 @@ console.log("tscongif.json  was created");
 // greet = () => {
 //   console.log('hello, again');
 // }
-let greet = () => {
-    console.log('hello, world');
+let greetOne = () => {
+    console.log("hello, world");
 };
 // impossible:
 // greet = 'hello';
 // put the optional parameter at the end (as last parameter)
-// c is optional parameter 
-const myFunctionOne = (a, b, c) => { console.log(a); console.log(b); console.log(c); };
-// c is optional parameter 
-const myFunctionTwo = (a, b, c = 10) => { console.log(a); console.log(b); console.log(c); };
-// Parameter cannot have question mark and initializer 
+// c is optional parameter
+const myFunctionOne = (a, b, c) => {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+};
+// c is optional parameter
+const myFunctionTwo = (a, b, c = 10) => {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+};
+// Parameter cannot have question mark and initializer
 // c?: number | string = 10
-const add = (a, b, c /*?*/ = 10) => {
+const add = (a, b, c = /*?*/ 10) => {
     console.log(a + b);
     console.log(c);
 };
 // Void functions are created and used just like value-returning functions except they do not return a value after the function executes.
-add(5, 10, 'ninja');
+add(5, 10, "ninja");
 const minus = (a, b) => {
     return a - b;
 };
 let result = minus(10, 7);
 console.log(result);
+const logDetails = (uid, item) => {
+    console.log(`${item} has a uid of ${uid}`);
+};
+const greetTwo = (user) => {
+    console.log(`${user.name} says hello`);
+};
+// ****************************************************
