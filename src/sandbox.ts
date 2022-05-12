@@ -211,7 +211,7 @@ console.log(result);
 type StringOrNum = string | number;
 type ObjWithName = { name: string; uid: StringOrNum };
 
-const logDetails = (uid: StringOrNum, item: string) => {
+const logDetailsOne = (uid: StringOrNum, item: string) => {
   console.log(`${item} has a uid of ${uid}`);
 };
 
@@ -219,3 +219,28 @@ const greetTwo = (user: ObjWithName) => {
   console.log(`${user.name} says hello`);
 };
 // ****************************************************
+// ******** Function Signatures ********
+// example 1
+let greetThree: (a: string, b: string) => void;
+
+greetThree = (name: string, greeting: string) => {
+  console.log(`${name} says ${greeting}`);
+}
+
+// example 2
+let calc: (a: number, b: number, c: string) => number;
+
+calc = (numOne: number, numTwo: number, action: string) => {
+  if (action === 'add') {
+    return numOne + numTwo;
+  } else {
+    return numOne - numTwo;
+  }
+}
+
+// example 3
+let logDetailsTwo: (obj: {name: string, age: number}) => void;
+
+logDetailsTwo = (ninja: {name: string, age: number}) => {
+  console.log(`${ninja.name} is ${ninja.age} years old`);
+}

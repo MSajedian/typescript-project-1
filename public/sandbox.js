@@ -155,10 +155,31 @@ const minus = (a, b) => {
 };
 let result = minus(10, 7);
 console.log(result);
-const logDetails = (uid, item) => {
+const logDetailsOne = (uid, item) => {
     console.log(`${item} has a uid of ${uid}`);
 };
 const greetTwo = (user) => {
     console.log(`${user.name} says hello`);
 };
 // ****************************************************
+// ******** Function Signatures ********
+// example 1
+let greetThree;
+greetThree = (name, greeting) => {
+    console.log(`${name} says ${greeting}`);
+};
+// example 2
+let calc;
+calc = (numOne, numTwo, action) => {
+    if (action === 'add') {
+        return numOne + numTwo;
+    }
+    else {
+        return numOne - numTwo;
+    }
+};
+// example 3
+let logDetailsTwo;
+logDetailsTwo = (ninja) => {
+    console.log(`${ninja.name} is ${ninja.age} years old`);
+};
