@@ -32,7 +32,7 @@ form.addEventListener("submit", (e: Event) => {
 // ****************************************************
 // ******** Classes ********
 
-class Invoice {
+class InvoiceX {
   client: string;
   details: string;
   amount: number;
@@ -48,21 +48,47 @@ class Invoice {
   }
 }
 
-const invOne = new Invoice("mario", "work on the mario website", 250);
-const invTwo = new Invoice("luigi", "work on the luigi website", 300);
+const invOne = new InvoiceX("mario", "work on the mario website", 250);
+const invTwo = new InvoiceX("luigi", "work on the luigi website", 300);
 
-let invoices: Invoice[] = [];
-invoices.push(invOne);
-invoices.push(invTwo);
-
-// Impossible:
-// invoices.push({ "client": "client1", "details": "details1", "amount": 1 });
+let invoicesX: InvoiceX[] = [];
+invoicesX.push(invOne);
+invoicesX.push(invTwo);
 
 // Impossible:
-// invoices.push({ name: 'shaun' });
+// invoicesX.push({ "client": "client1", "details": "details1", "amount": 1 });
 
-console.log('invoices:', invoices)
+// Impossible:
+// invoicesX.push({ name: 'shaun' });
+
+console.log('invoicesX:', invoicesX)
 console.log('invOne.format():', invOne.format())
 
 // ****************************************************
-// ********  ********
+// ******** Classes - Public, Private & Readonly ********
+class InvoiceY {
+  // readonly client: string;
+  // private details: string;
+  // public amount: number;
+
+  constructor(
+    readonly client: string, 
+    private details: string, 
+    public amount: number,
+  ){}
+
+  format() {
+    return `${this.client} owes £${this.amount} for ${this.details}`;
+  }
+}
+
+const invoOne = new InvoiceY('mario', 'work on the mario website', 250);
+const invoTwo = new InvoiceY('luigi', 'work on the luigi website', 300);
+
+let invoicesY: InvoiceY[] = [];
+invoicesY.push(invoOne)
+invoicesY.push(invoTwo);
+
+invoicesY.forEach(inv => {
+  console.log(inv.client, /*inv.details,*/ inv.amount, inv.format());
+})
