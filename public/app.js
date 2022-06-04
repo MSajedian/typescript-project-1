@@ -1,4 +1,3 @@
-"use strict";
 // ****************************************************
 // ******** The DOM & Type Casting ********
 const anchor = document.querySelector("a");
@@ -22,7 +21,7 @@ form.addEventListener("submit", (e) => {
 });
 // ****************************************************
 // ******** Classes ********
-class InvoiceX {
+export class InvoiceX {
     constructor(c, d, a) {
         this.client = c;
         this.details = d;
@@ -41,28 +40,17 @@ invoicesX.push(invTwo);
 // invoicesX.push({ "client": "client1", "details": "details1", "amount": 1 });
 // Impossible:
 // invoicesX.push({ name: 'shaun' });
-console.log('invoicesX:', invoicesX);
-console.log('invOne.format():', invOne.format());
+console.log("invoicesX:", invoicesX);
+console.log("invOne.format():", invOne.format());
 // ****************************************************
 // ******** Classes - Public, Private & Readonly ********
-class InvoiceY {
-    // readonly client: string;
-    // private details: string;
-    // public amount: number;
-    constructor(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    format() {
-        return `${this.client} owes £${this.amount} for ${this.details}`;
-    }
-}
-const invoOne = new InvoiceY('mario', 'work on the mario website', 250);
-const invoTwo = new InvoiceY('luigi', 'work on the luigi website', 300);
+// ******** Modules ********
+import { InvoiceY } from "./classes/InvoiceY.js";
+const invoOne = new InvoiceY("mario Y", "work on the mario website", 250);
+const invoTwo = new InvoiceY("luigi Y", "work on the luigi website", 300);
 let invoicesY = [];
 invoicesY.push(invoOne);
 invoicesY.push(invoTwo);
-invoicesY.forEach(inv => {
+invoicesY.forEach((inv) => {
     console.log(inv.client, /*inv.details,*/ inv.amount, inv.format());
 });

@@ -32,7 +32,7 @@ form.addEventListener("submit", (e: Event) => {
 // ****************************************************
 // ******** Classes ********
 
-class InvoiceX {
+export class InvoiceX {
   client: string;
   details: string;
   amount: number;
@@ -61,34 +61,21 @@ invoicesX.push(invTwo);
 // Impossible:
 // invoicesX.push({ name: 'shaun' });
 
-console.log('invoicesX:', invoicesX)
-console.log('invOne.format():', invOne.format())
+console.log("invoicesX:", invoicesX);
+console.log("invOne.format():", invOne.format());
 
 // ****************************************************
 // ******** Classes - Public, Private & Readonly ********
-class InvoiceY {
-  // readonly client: string;
-  // private details: string;
-  // public amount: number;
+// ******** Modules ********
+import { InvoiceY } from "./classes/InvoiceY.js";
 
-  constructor(
-    readonly client: string, 
-    private details: string, 
-    public amount: number,
-  ){}
-
-  format() {
-    return `${this.client} owes £${this.amount} for ${this.details}`;
-  }
-}
-
-const invoOne = new InvoiceY('mario', 'work on the mario website', 250);
-const invoTwo = new InvoiceY('luigi', 'work on the luigi website', 300);
+const invoOne = new InvoiceY("mario Y", "work on the mario website", 250);
+const invoTwo = new InvoiceY("luigi Y", "work on the luigi website", 300);
 
 let invoicesY: InvoiceY[] = [];
-invoicesY.push(invoOne)
+invoicesY.push(invoOne);
 invoicesY.push(invoTwo);
 
-invoicesY.forEach(inv => {
+invoicesY.forEach((inv) => {
   console.log(inv.client, /*inv.details,*/ inv.amount, inv.format());
-})
+});
