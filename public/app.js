@@ -54,3 +54,21 @@ invoicesY.push(invoTwo);
 invoicesY.forEach((inv) => {
     console.log(inv.client, /*inv.details,*/ inv.amount, inv.format());
 });
+const me = {
+    name: "shaun",
+    age: 30,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log("I spent ", amount);
+        return amount;
+    },
+};
+console.log(me);
+me.speak("hello, world 2");
+const greetPerson = (person) => {
+    console.log("hello ", person.name);
+};
+greetPerson(me);
+//greetPerson({name: 'shaun'});
