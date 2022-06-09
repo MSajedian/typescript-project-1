@@ -1,24 +1,31 @@
+import { Invoice } from "./classes/Invoice.js";
+import { Payment } from "./classes/Payment.js";
+import { ListTemplate } from './classes/ListTemplate.js';
 // ****************************************************
 // ******** The DOM & Type Casting ********
-const anchor = document.querySelector("a");
-if (anchor) {
-    // console.log(anchor.href);
-}
-// console.log(anchor.href);
-//const form = document.querySelector('form')!;
-const form = document.querySelector(".new-item-form");
-// console.log(form.children);
-// **** Inputs ****
-const type = document.querySelector("#type");
-const tofrom = document.querySelector("#tofrom");
-const details = document.querySelector("#details");
-const amount = document.querySelector("#amount");
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    console.log(type.value, tofrom.value, details.value, 
-    // amount.value
-    amount.valueAsNumber);
-});
+// const anchor = document.querySelector("a")!;
+// if (anchor) {
+//   // console.log(anchor.href);
+// }
+// // console.log(anchor.href);
+// //const form = document.querySelector('form')!;
+// const form = document.querySelector(".new-item-form") as HTMLFormElement;
+// // console.log(form.children);
+// // **** Inputs ****
+// const type = document.querySelector("#type") as HTMLInputElement;
+// const tofrom = document.querySelector("#tofrom") as HTMLInputElement;
+// const details = document.querySelector("#details") as HTMLInputElement;
+// const amount = document.querySelector("#amount") as HTMLInputElement;
+// form.addEventListener("submit", (e: Event) => {
+//   e.preventDefault();
+//   console.log(
+//     type.value,
+//     tofrom.value,
+//     details.value,
+//     // amount.value
+//     amount.valueAsNumber
+//   );
+// });
 // ****************************************************
 // ******** Classes ********
 export class InvoiceX {
@@ -72,3 +79,52 @@ const greetPerson = (person) => {
 };
 greetPerson(me);
 //greetPerson({name: 'shaun'});
+// ****************************************************
+// ******** Interfaces with Classes ********
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+// docOne = new Invoice('yoshi', 'web work', 250);
+// docTwo = new Payment('mario', 'plumbing', 200);
+// let docs: HasFormatter[] = [];
+// docs.push(docOne);
+// docs.push(docTwo);
+// const form = document.querySelector(".new-item-form") as HTMLFormElement;
+// console.log(form.children);
+// // inputs
+// const type = document.querySelector("#type") as HTMLInputElement;
+// const tofrom = document.querySelector("#tofrom") as HTMLInputElement;
+// const details = document.querySelector("#details") as HTMLInputElement;
+// const amount = document.querySelector("#amount") as HTMLInputElement;
+// form.addEventListener("submit", (e: Event) => {
+//   e.preventDefault();
+//   let doc: HasFormatter;
+//   if (type.value === "invoice") {
+//     doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+//   } else {
+//     doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+//   }
+//   console.log(doc);
+// });
+// ****************************************************
+// ******** Rendering an HTML Template ********
+const form = document.querySelector('.new-item-form');
+console.log(form.children);
+// inputs
+const type = document.querySelector('#type');
+const tofrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
+// list template instance
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    list.render(doc, type.value, 'end');
+});
