@@ -47,8 +47,8 @@ invoicesX.push(invTwo);
 // invoicesX.push({ "client": "client1", "details": "details1", "amount": 1 });
 // Impossible:
 // invoicesX.push({ name: 'shaun' });
-console.log("invoicesX:", invoicesX);
-console.log("invOne.format():", invOne.format());
+// console.log("invoicesX:", invoicesX);
+// console.log("invOne.format():", invOne.format());
 // ****************************************************
 // ******** Classes - Public, Private & Readonly ********
 // ******** Modules ********
@@ -58,9 +58,6 @@ const invoTwo = new InvoiceY("luigi Y", "work on the luigi website", 300);
 let invoicesY = [];
 invoicesY.push(invoOne);
 invoicesY.push(invoTwo);
-invoicesY.forEach((inv) => {
-    console.log(inv.client, /*inv.details,*/ inv.amount, inv.format());
-});
 const me = {
     name: "shaun",
     age: 30,
@@ -72,12 +69,12 @@ const me = {
         return amount;
     },
 };
-console.log(me);
-me.speak("hello, world 2");
+// console.log(me);
+// me.speak("hello, world 2");
 const greetPerson = (person) => {
     console.log("hello ", person.name);
 };
-greetPerson(me);
+// greetPerson(me);
 //greetPerson({name: 'shaun'});
 // ****************************************************
 // ******** Interfaces with Classes ********
@@ -108,7 +105,7 @@ greetPerson(me);
 // ****************************************************
 // ******** Rendering an HTML Template ********
 const form = document.querySelector('.new-item-form');
-console.log(form.children);
+// console.log(form.children);
 // inputs
 const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
@@ -128,3 +125,31 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, 'end');
 });
+// ****************************************************
+// ******** GENERICS ********
+// const addUID = (obj: object) => {
+//   let uid = Math.floor(Math.random() * 100);
+//   return {...obj, uid};
+// }
+// const addUID = <T extends object>(obj: T) => {
+//   let uid = Math.floor(Math.random() * 100);
+//   return {...obj, uid};
+// }
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let docOne = addUID({ name: 'yoshi', age: 40 });
+//let docTwo = addUID('shaun');
+console.log(docOne.name);
+const docThree = {
+    uid: 1,
+    resourceName: 'person',
+    data: { name: 'shaun' }
+};
+const docFour = {
+    uid: 1,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk']
+};
+console.log(docThree, docFour);
